@@ -15,8 +15,10 @@ void bubble_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	/*Loop through the array len times, where len starts at the size of the\
-   * array*/
+	/*
+	 * Loop through the array len times, where len starts at the size of the
+	 * array
+	 */
 	while (len--)
 	{
 		/*Loop through the array up to len-1*/
