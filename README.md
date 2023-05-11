@@ -58,3 +58,12 @@ This project is meant to be done by groups of two students. Each group of two sh
   - in the best case
   - in the average case
   - in the worst case
+
+**1. Insertion sort**
+- [1-insertion_sort_list.c](./1-insertion_sort_list.c): A function that sorts a doubly linked list of integers in ascending order using the [Insertion sort](https://en.m.wikipedia.org/wiki/Insertion_sort) algorithm.
+  - It is not allowed to modify the integer `n` of a node. It swap the nodes themselves.
+  - it prints the list after each time ytwo elements swap
+- the file [1-O](./1-O) contains the big O notations of the time complexity of the Insertion sort algorithm, with 1 notation per line:
+  - in the best case
+  - in the average case
+  - in the worst case
