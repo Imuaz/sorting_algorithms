@@ -67,3 +67,11 @@ This project is meant to be done by groups of two students. Each group of two sh
   - in the best case
   - in the average case
   - in the worst case
+
+**2. Selection sort**
+- [2-selection_sort.c](./2-selection_sort.c): A function that sorts an array of integers in ascending order using the [Selection sort](https://en.m.wikipedia.org/wiki/Selection_sort) algorithm.
+  - it prints the array after each time two elements swap.
+- the file [2-O](./2-O) contains the big O notations of the time complexity of the Selection sort algorithm, with 1 notation per line:
+  - in the best case
+  - in the average case
+  - in the worst case
