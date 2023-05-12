@@ -5,22 +5,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-/* Comparison direction macros for bitonic sort */
-#define UP 0
-#define DOWN 1
-
-/**
- * enum bool - Enumeration of Boolean values.
- * @false: Equals 0.
- * @true: Equals 1.
- */
-typedef enum bool
-{
-	false = 0,
-	true
-} bool;
-
-
 /**
  * struct listint_s - Doubly linked list node
  *
@@ -35,6 +19,9 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+void bitonic_sort(int *array, size_t size);
+void sort_bitonic(int *array, int low_idx, int count, int maxsize, int dirctn);
+void bitonic_merge(int *array, int low_idx, int count, int dirctn);
 void bitonic_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
