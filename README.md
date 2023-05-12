@@ -66,42 +66,46 @@ This project is meant to be done by groups of two students. Each group of two sh
 |`105-radix_sort.c`|`void radix_sort(int *array, size_t size);`|
 |`106-bitonic_sort.c`, `106-O`|`void bitonic_sort(int *array, size_t size);`|
 |`107-quick_sort_hoare.c`, `107-O`|`void quick_sort_hoare(int *array, size_t size);`|
----------------------------------------
-|Data Structure|
-|--------------|
-|``typedef struct listint_s
+
+Data Structure:
+```
+typedef struct listint_s
 {
     const int n;
     struct listint_s *prev;
     struct listint_s *next;
-} listint_t;``|
+} listint_t;
+```
 
 - [deck.h](./deck.h): Header file that contains the structure definitions and function prototypes for the task `1000-sort_deck.c`.
 
 |File|Prototype|
 |----|---------|
 |`1000-sort_deck.c`|`void sort_deck(deck_node_t **deck);`|
-|Data Structure|
-|--------------|
-|``typedef enum kind_e
+
+Data Structure:
+```
+typedef enum kind_e
 {
     SPADE = 0,
     HEART,
     CLUB,
     DIAMOND
 } kind_t;``|
-|``typedef struct card_s
+
+typedef struct card_s
 {
     const char *value;
     const kind_t kind;
 } card_t;
-``|
-|``typedef struct deck_node_s
+
+typedef struct deck_node_s
 {
     const card_t *card;
     struct deck_node_s *prev;
     struct deck_node_s *next;
-} deck_node_t;``|
+} deck_node_t;
+```
 
 ## Tasks:page_with_curl:
 
