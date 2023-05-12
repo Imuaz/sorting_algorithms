@@ -194,7 +194,7 @@ typedef struct deck_node_s
   - in the worst case
 
 **9. Radix sort**
-- [105-radix_sort.c](./105-radix_sort.c): A function that sorts an array of integers in ascending order using the [Radix sort] algorithm.
+- [105-radix_sort.c](./105-radix_sort.c): A function that sorts an array of integers in ascending order using the [Radix sort](https://en.m.wikipedia.org/wiki/Radix_sort) algorithm.
   - itt implements the `LSD` radix sort algorithm
   - it is assume that array will contain only numbers `>= 0`
   - it is allowed to use `malloc` and `free` for this task
