@@ -1,86 +1,80 @@
 #include "sort.h"
 
+
 /**
- * bitonic_sort - Sorts an array of integers in ascending order using the
- * Bitonic sort algorithm.
- * @array: The array to be sorted.
+ * int_swp - Swap two integers in an array.
+ * @a: The first integer to swap.
+ * @b: The second integer to swap.
+ */
+void int_swp(int *a, int *b)
+{
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+/**
+ * bit_mrg - Sort a bitonic sequence inside an array of integers.
+ * @array: An array of integers.
  * @size: The size of the array.
+ * @start: The starting index of the sequence in array to sort.
+ * @seq: The size of the sequence to sort.
+ * @flow: The direction to sort in.
+ */
+void bit_mrg(int *array, size_t size, size_t start, size_t seq, char flow)
+{
+	size_t i, jump = seq / 2;
+
+	if (seq > 1)
+	{
+		for (i = start; i < start + jump; i++)
+		{
+			if ((flow == UP && array[i] > array[i + jump]) ||
+			    (flow == DOWN && array[i] < array[i + jump]))
+			{
+				int_swp(&array[i], &array[i + jump]);
+				printf("Result [%lu/%lu] (%s):\n", seq, size, flow == UP ? "UP" : "DOWN");
+				print_array(array, size);
+			}
+		}
+		bit_mrg(array, size, start, jump, flow);
+		bit_mrg(array, size, start + jump, jump, flow);
+	}
+}
+
+/**
+ * bit_seq - Convert an array of integers into a bitonic sequence.
+ * @array: An array of integers.
+ * @size: The size of the array.
+ * @start: The starting index of a block of the building bitonic sequence.
+ * @seq: The size of a block of the building bitonic sequence.
+ * @flow: The direction to sort the bitonic sequence block in.
+ */
+void bit_seq(int *array, size_t size, size_t start, size_t seq, char flow)
+{
+	size_t cut = seq / 2;
+
+	if (seq > 1)
+	{
+		bit_seq(array, size, start, cut, UP);
+		bit_seq(array, size, start + cut, cut, DOWN);
+		bit_mrg(array, size, start, seq, flow);
+	}
+}
+
+/**
+ * bitonic_sort - Sort an array of integers in ascending
+ *                order using the bitonic sort algorithm.
+ * @array: An array of integers.
+ * @size: The size of the array.
+ *
+ * Description: Prints the array after each swap. Only works for
+ * size = 2^k where k >= 0 (ie. size equal to powers of 2).
  */
 void bitonic_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
 		return;
 
-	sort_bitonic(array, 0, size, size, 1);
-}
-
-/**
- * sort_bitonic - Sorts an array of integers in ascending or descending order
- * using the Bitonic sort algorithm.
- * @array: The array to be sorted.
- * @low_idx: The lowest index of the array or subarray that we
- * are working with.
- * @count: The number of elements in the array or subarray that we are
- * working with.
- * @maxsize: The maximum size of the array.
- * @dirctn: Determines if we are to sort the list in
- * ascending or descending order:
- * 1 - Sort in ascending order.
- * 0 - Sort in descending order.
- */
-void sort_bitonic(int *array, int low_idx, int count, int maxsize, int dirctn)
-{
-	int k;
-
-	if (count == 1)
-		return;
-
-	k = count / 2;
-
-	printf("Merging [%d/%d] (%s):\n", count, maxsize, dirctn ? "UP" : "DOWN");
-	print_array(array + low_idx, count);
-
-	sort_bitonic(array, low_idx, k, maxsize, 1);
-	sort_bitonic(array, low_idx + k, k, maxsize, 0);
-
-	bitonic_merge(array, low_idx, count, dirctn);
-
-	printf("Result [%d/%d] (%s):\n", count, maxsize, dirctn ? "UP" : "DOWN");
-	print_array(array + low_idx, count);
-}
-
-/**
- * bitonic_merge - Merges two bitonic sequences.
- * @array: The array to be sorted.
- * @low_idx: The lowest index of the array or subarray
- * that we are working with.
- * @count: The number of elements in the array or subarray that
- * we are working with.
- * @dirctn: Determines if we are to sort the list in ascending
- * or descending order:
- * 1 - Sort in ascending order.
- * 0 - Sort in descending order.
- */
-void bitonic_merge(int *array, int low_idx, int count, int dirctn)
-{
-	int k, i, temp;
-	int *subarray = array + low_idx;
-
-	if (count == 1)
-		return;
-
-	k = count / 2;
-	for (i = 0; i < k; i++)
-	{
-		if (dirctn == (subarray[i] > subarray[i + k]))
-		{
-			temp = subarray[i];
-			subarray[i] = subarray[i + k];
-			subarray[i + k] = temp;
-			print_array(array + low_idx, count);
-		}
-	}
-
-	bitonic_merge(array, low_idx, k, dirctn);
-	bitonic_merge(array, low_idx + k, k, dirctn);
+	bit_seq(array, size, 0, size, UP);
 }
