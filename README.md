@@ -134,3 +134,10 @@ This project is meant to be done by groups of two students. Each group of two sh
   - in the best case
   - in the average case
   - in the worst case
+
+**9. Radix sort**
+- [105-radix_sort.c](./105-radix_sort.c): A function that sorts an array of integers in ascending order using the [Radix sort] algorithm.
+  - itt implements the `LSD` radix sort algorithm
+  - it is assume that array will contain only numbers `>= 0`
+  - it is allowed to use `malloc` and `free` for this task
+  - it print the `array` each time the `significant digit` increases.
