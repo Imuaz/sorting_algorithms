@@ -93,3 +93,12 @@ This project is meant to be done by groups of two students. Each group of two sh
     - `1, 4, 13, 40, 121, ...`
   - it prints the `array` each time the interval decreases.
 - **No big O notations of the time complexity of the Shell sort (Knuth sequence) algorithm needed - as the complexity is dependent on the size of array and gap**
+
+**5. Cocktail shaker sort**
+- [101-cocktail_sort_list.c](./101-cocktail_sort_list.c): A function that sorts a doubly linked list of integers in ascending order using the [Cocktail shaker sort](https://en.m.wikipedia.org/wiki/Cocktail_shaker_sort) algorithm.
+  - It is not allowed to modify the integer n of a node. It swaps the nodes themselves.
+  - it prints the list after each time two elements swap.
+- The file [101-O](./101-O) contains the big O notations of the time complexity of the Cocktail shaker sort algorithm, with 1 notation per line:
+  - in the best case
+  - in the average case
+  - in the worst case
