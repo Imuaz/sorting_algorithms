@@ -113,3 +113,15 @@ This project is meant to be done by groups of two students. Each group of two sh
   - in the best case
   - in the average case
   - in the worst case
+
+**7. Merge sort**
+- [103-merge_sort.c](./103-merge_sort.c): A function that sorts an array of integers in ascending order using the [Merge sort](https://en.m.wikipedia.org/wiki/Merge_sort) algorithm.
+  - it implements the top-down merge sort algorithm
+    - When an array is devided into two sub-arrays, the size of the left array is always `<=` size of the right array. i.e. `{1, 2, 3, 4, 5} -> {1, 2}`, `{3, 4, 5}`
+    - it sorts the left array before the right array
+  - It is allowed to use `printf`
+  - it is allowed to use `malloc` and `free` only once (only one **call**)
+- The file [103-O](./103-O) contains the big O notations of the time complexity of the Merge sort algorithm, with 1 notation per line:
+  - in the best case
+  - in the average case
+  - in the worst case
