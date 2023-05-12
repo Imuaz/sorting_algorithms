@@ -85,3 +85,11 @@ This project is meant to be done by groups of two students. Each group of two sh
   - in the best case
   - in the average case
   - in the worst case
+
+**4. Shell sort - Knuth Sequence**
+- [100-shell_sort.c](./100-shell_sort.c): A function that sorts an array of integers in ascending order using the [Shell sort](https://en.m.wikipedia.org/wiki/Shellsort) algorithm, using the `Knuth sequence`
+  - It uses the following sequence of intervals (a.k.a the Knuth sequence):
+    - `n+1 = n * 3 + 1`
+    - `1, 4, 13, 40, 121, ...`
+  - it prints the `array` each time the interval decreases.
+- **No big O notations of the time complexity of the Shell sort (Knuth sequence) algorithm needed - as the complexity is dependent on the size of array and gap**
