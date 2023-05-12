@@ -151,3 +151,13 @@ This project is meant to be done by groups of two students. Each group of two sh
   - in the best case
   - in the average case
   - in the worst case
+
+**11. Quick Sort - Hoare Partition scheme**
+- [107-quick_sort_hoare.c](./107-quick_sort_hoare.c): A function that sorts an array of integers in ascending order using the [Quick sort](https://en.m.wikipedia.org/wiki/Quicksort) algorithm.
+  - It implements the `Hoare` partition scheme.
+  - The pivot is always the last element of the partition being sorted.
+  - it prints the `array` after each time two elements swap.
+- The file [107-O](./107-O) contains the big O notations of the time complexity of the Quick sort algorithm, with 1 notation per line:
+  - in the best case
+  - in the average case
+  - in the worst case

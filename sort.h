@@ -34,6 +34,7 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+void quick_sort_hoare(int *array, size_t size);
 void int_swp(int *a, int *b);
 void bit_mrg(int *array, size_t size, size_t start, size_t seq, char flow);
 void bit_seq(int *array, size_t size, size_t start, size_t seq, char flow);
