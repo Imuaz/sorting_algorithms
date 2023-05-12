@@ -21,10 +21,11 @@ void swap_ints(int *a, int *b)
  */
 void bitonic_merge(int *array, size_t start, size_t size, int dir)
 {
+    size_t i;
     if (size > 1)
     {
         size_t mid = size / 2;
-        for (size_t i = start; i < start + mid; i++)
+        for (i = start; i < start + mid; i++)
         {
             if ((array[i] > array[i + mid] && dir == 1) ||
                 (array[i] < array[i + mid] && dir == 0))
