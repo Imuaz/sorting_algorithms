@@ -125,3 +125,12 @@ This project is meant to be done by groups of two students. Each group of two sh
   - in the best case
   - in the average case
   - in the worst case
+
+**8. Heap sort**
+- [104-heap_sort.c](./104-heap_sort.c): A function that sorts an array of integers in ascending order using the [Heap sort](https://en.m.wikipedia.org/wiki/Heapsort) algorithm.
+  - it implements the sift-down heap sort algorithm
+  - it prints the array after each time two elements swap.
+- The file [104-O](./104-O) contains the big O notations of the time complexity of the Heap sort algorithm, with 1 notation per line:
+  - in the best case
+  - in the average case
+  - in the worst case
