@@ -102,3 +102,14 @@ This project is meant to be done by groups of two students. Each group of two sh
   - in the best case
   - in the average case
   - in the worst case
+
+**6. Counting sort**
+- [102-counting_sort.c](./102-counting_sort.c): A function that sorts an array of integers in ascending order using the [Counting sort](https://en.m.wikipedia.org/wiki/Counting_sort) algorithm.
+  - It is assume that array will contain only numbers `>= 0`
+  - it is allowed to use malloc and free for this task
+  - it prints the counting array once it is set up.
+    - This array is of size `k + 1` where `k` is the largest number in `array`
+- The file [102-O](./102-O) contains the big O notations of the time complexity of the Counting sort algorithm, with 1 notation per line:
+  - in the best case
+  - in the average case
+  - in the worst case
