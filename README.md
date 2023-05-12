@@ -49,6 +49,59 @@ This project is meant to be done by groups of two students. Each group of two sh
 - the “short” notation (constants should not be used). Example: `O(nk)` or `O(wn)` should be written `O(n)`. If an answer is required within a file, all answers files must have a newline at the end.
 - Here is a quick tip that help in testing the sorting algorithms with big sets of random integers: [Random.org](https://www.random.org/integer-sets/)
 
+## Header files:open_file_folder:
+- [sort.h](./sort.h): The hearder file that contain the prototypes of all functions and structure definitions use some functions.
+
+|File|Prototype/structure|
+|----|-------------------|
+|`0-bubble_sort.c`, `0-O`|`void bubble_sort(int *array, size_t size);`|
+|`1-insertion_sort_list.c`, `1-O`|`void insertion_sort_list(listint_t **list);`|
+|`2-selection_sort.c`, `2-O`|`void selection_sort(int *array, size_t size);`|
+|`3-quick_sort.c`, `3-O`|`void quick_sort(int *array, size_t size);`|
+|`100-shell_sort.c`|`void shell_sort(int *array, size_t size);`|
+|`101-cocktail_sort_list.c`, `101-O`|`void cocktail_sort_list(listint_t **list);`|
+|`102-counting_sort.c`, `102-O`|`void counting_sort(int *array, size_t size);`|
+|`103-merge_sort.c`, `103-O`|`void merge_sort(int *array, size_t size);`|
+|`104-heap_sort.c`, `104-O`|`void heap_sort(int *array, size_t size);`|
+|`105-radix_sort.c`|`void radix_sort(int *array, size_t size);`|
+|`106-bitonic_sort.c`, `106-O`|`void bitonic_sort(int *array, size_t size);`|
+|`107-quick_sort_hoare.c`, `107-O`|`void quick_sort_hoare(int *array, size_t size);`|
+|Data Structure|
+|--------------|
+|``typedef struct listint_s
+{
+    const int n;
+    struct listint_s *prev;
+    struct listint_s *next;
+} listint_t;``|
+
+- [deck.h](./deck.h): Header file that contains the structure definitions and function prototypes for the task `1000-sort_deck.c`.
+
+|File|Prototype|
+|----|---------|
+|`1000-sort_deck.c`|`void sort_deck(deck_node_t **deck);`|
+|Data Structure|
+|--------------|
+|``typedef enum kind_e
+{
+    SPADE = 0,
+    HEART,
+    CLUB,
+    DIAMOND
+} kind_t;``|
+|``typedef struct card_s
+{
+    const char *value;
+    const kind_t kind;
+} card_t;
+``|
+|``typedef struct deck_node_s
+{
+    const card_t *card;
+    struct deck_node_s *prev;
+    struct deck_node_s *next;
+} deck_node_t;``|
+
 ## Tasks:page_with_curl:
 
 **0. Bubble sort**
@@ -161,3 +214,18 @@ This project is meant to be done by groups of two students. Each group of two sh
   - in the best case
   - in the average case
   - in the worst case
+
+**12. Dealer**
+- [1000-sort_deck.c](./1000-sort_deck.c): A function that sorts a deck of cards.
+  - It is allowed to use the C standard library function `qsort`
+  - the [deck.h](./deck.h) is the header file, containing the given data structures' definition for the task.
+  - Each node of the doubly linked list contains a card that cannot be modified.
+  - it swaps the nodes.
+  - it is assume there is exactly `52` elements in the doubly linked list.
+  - any sorting algorithm can be used
+  - The deck must be ordered:
+    - From `Ace` to `King`
+    - From Spades to Diamonds
+
+## Tests:100::heavy_check_mark:
+- [tests](./tests): Folder of test (`main.c` functions) files provided by ALX and some written files use for testing.
