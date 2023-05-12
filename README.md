@@ -67,7 +67,7 @@ This project is meant to be done by groups of two students. Each group of two sh
 |`106-bitonic_sort.c`, `106-O`|`void bitonic_sort(int *array, size_t size);`|
 |`107-quick_sort_hoare.c`, `107-O`|`void quick_sort_hoare(int *array, size_t size);`|
 |Data Structure|
-|--------------|
+--------------
 |``typedef struct listint_s
 {
     const int n;
