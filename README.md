@@ -141,3 +141,13 @@ This project is meant to be done by groups of two students. Each group of two sh
   - it is assume that array will contain only numbers `>= 0`
   - it is allowed to use `malloc` and `free` for this task
   - it print the `array` each time the `significant digit` increases.
+
+**10. Bitonic sort**
+- [106-bitonic_sort.c](./106-bitonic_sort.c): A function that sorts an array of integers in ascending order using the [Bitonic sort](https://en.m.wikipedia.org/wiki/Bitonic_sorter) algorithm.
+  - It is assume that size will be equal to `2^k`, where `k >= 0` (when `array` is not `NULL` …)
+  - It is allowed to use printf
+  - it prints the `array` each time two elements swap
+- The file [106-O](./106-O) contains the big O notations of the time complexity of the Bitonic sort algorithm, with 1 notation per line:
+  - in the best case
+  - in the average case
+  - in the worst case
