@@ -1,71 +1,73 @@
 #include "sort.h"
 
 /**
- * swp_nodes - Swaps two nodes in a doubly linked list.
+ * swapNodes - Swaps two adjacent nodes in a doubly linked list.
  *
- * @list: Pointer to the head of the doubly linked list.
- * @node1: First node to swap.
- * @node2: Second node to swap.
+ * @left_node: Pointer to the left node.
+ * @right_node: Pointer to the right node.
+ * @head: Double pointer to the head of the list.
  */
-void swp_nodes(listint_t **list, listint_t *node1, listint_t *node2)
+void swapNodes(listint_t *left_node, listint_t *right_node, listint_t **head)
 {
-	if (node1->prev)
-		node1->prev->next = node2;
-	if (node2->next)
-		node2->next->prev = node1;
-	node1->next = node2->next;
-	node2->prev = node1->prev;
-	node1->prev = node2;
-	node2->next = node1;
+	listint_t *temp_prev = left_node->prev;
+	listint_t *temp_next = right_node->next;
 
-	if (!node2->prev)
-		*list = node2;
-	print_list((const listint_t *)*list);
+	if (temp_prev)
+		temp_prev->next = right_node;
+	else
+		*head = right_node;
+
+	if (temp_next)
+		temp_next->prev = left_node;
+
+	right_node->prev = temp_prev;
+	right_node->next = left_node;
+	left_node->prev = right_node;
+	left_node->next = temp_next;
+
+	print_list(*head);
 }
 
 /**
- * cocktail_sort_list - Sorts a doubly linked list of integers
- *                      using the Cocktail Shaker sort algorithm.
+ * cocktail_sort_list - Sorts a doubly linked list using the Cocktail
+ * Shaker sort algorithm.
  *
- * @list: Pointer to the head of the doubly linked list.
+ * @list: Double pointer to the head of the list.
  */
 void cocktail_sort_list(listint_t **list)
 {
 	int swapped = 1;
-	listint_t *start = NULL;
-	listint_t *end = NULL;
-	listint_t *current = NULL;
+	listint_t *current, *tail;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
+	current = *list;
+	tail = NULL;
+
 	while (swapped)
 	{
 		swapped = 0;
-
-		for (current = start = *list; current->next != end; current = current->next)
+		while (current->next != tail)
 		{
 			if (current->n > current->next->n)
 			{
-				swp_nodes(list, current, current->next);
+				swapNodes(current, current->next, list);
 				swapped = 1;
 			}
+			else
+				current = current->next;
 		}
-
-		if (!swapped)
-			break;
-
-		end = current;
-
-		for (current = end; current != start; current = current->prev)
+		tail = current;
+		while (current->prev != NULL)
 		{
 			if (current->n < current->prev->n)
 			{
-				swp_nodes(list, current->prev, current);
+				swapNodes(current->prev, current, list);
 				swapped = 1;
 			}
+			else
+				current = current->prev;
 		}
-
-		start = current;
 	}
 }
