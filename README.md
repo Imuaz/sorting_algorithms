@@ -68,7 +68,6 @@ This project is meant to be done by groups of two students. Each group of two sh
 |`107-quick_sort_hoare.c`, `107-O`|`void quick_sort_hoare(int *array, size_t size);`|
 ---------------------------------------
 |Data Structure|
---------------
 |``typedef struct listint_s
 {
     const int n;
