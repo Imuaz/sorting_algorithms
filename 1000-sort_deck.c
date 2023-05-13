@@ -2,32 +2,25 @@
 #include "deck.h"
 
 /**
- * swap_nodes - swaps two nodes in a doubly-linked list.
+ * _strcmp - Compares two strings.
+ * @s1: The first string to be compared.
+ * @s2: The second string to be compared.
  *
- * @node1:The first node to swap.
- * @node2:The second node to swap.
+ * Return: Positive byte difference if s1 > s2
+ *         0 if s1 == s2
+ *         Negative byte difference if s1 < s2
  */
-void swap_nodes(deck_node_t *node1, deck_node_t *node2)
+int _strcmp(const char *s1, const char *s2)
 {
-	deck_node_t *prev1 = node1->prev;
-	deck_node_t *next1 = node1->next;
-	deck_node_t *prev2 = node2->prev;
-	deck_node_t *next2 = node2->next;
+	while (*s1 && *s2 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
 
-
-	if (prev1 != NULL)
-		prev1->next = node2;
-	if (next1 != NULL)
-		next1->prev = node2;
-	if (prev2 != NULL)
-		prev2->next = node1;
-	if (next2 != NULL)
-		next2->prev = node1;
-
-	node1->prev = prev2;
-	node1->next = next2;
-	node2->prev = prev1;
-	node2->next = next1;
+	if (*s1 != *s2)
+		return (*s1 - *s2);
+	return (0);
 }
 
 /**
@@ -37,34 +30,96 @@ void swap_nodes(deck_node_t *node1, deck_node_t *node2)
  *
  * Return: The numerical value of the card.
  */
-int get_value(deck_node_t *card)
+char get_value(deck_node_t *card)
 {
-	int i;
-	const char *values[] = {
-		"Ace",
-		"1",
-		"2",
-		"3",
-		"4",
-		"5",
-		"6",
-		"7",
-		"8",
-		"9",
-		"10",
-		"Jack",
-		"Queen"
-	};
+	if (_strcmp(card->card->value, "Ace") == 0)
+		return (0);
+	if (_strcmp(card->card->value, "1") == 0)
+		return (1);
+	if (_strcmp(card->card->value, "2") == 0)
+		return (2);
+	if (_strcmp(card->card->value, "3") == 0)
+		return (3);
+	if (_strcmp(card->card->value, "4") == 0)
+		return (4);
+	if (_strcmp(card->card->value, "5") == 0)
+		return (5);
+	if (_strcmp(card->card->value, "6") == 0)
+		return (6);
+	if (_strcmp(card->card->value, "7") == 0)
+		return (7);
+	if (_strcmp(card->card->value, "8") == 0)
+		return (8);
+	if (_strcmp(card->card->value, "9") == 0)
+		return (9);
+	if (_strcmp(card->card->value, "10") == 0)
+		return (10);
+	if (_strcmp(card->card->value, "Jack") == 0)
+		return (11);
+	if (_strcmp(card->card->value, "Queen") == 0)
+		return (12);
+	return (13);
+}
 
-	for (i = 0; i < 13; i++)
+/**
+ * insertion_sort_deck_kind - Sort a deck of cards from spades to diamonds.
+ * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ */
+void insertion_sort_deck_kind(deck_node_t **deck)
+{
+	deck_node_t *iter, *insert, *tmp;
+
+	for (iter = (*deck)->next; iter != NULL; iter = tmp)
 	{
-		if (strcmp(card->card->value, values[i]) == 0)
+		tmp = iter->next;
+		insert = iter->prev;
+		while (insert != NULL && insert->card->kind > iter->card->kind)
 		{
-			return (i);
+			insert->next = iter->next;
+			if (iter->next != NULL)
+				iter->next->prev = insert;
+			iter->prev = insert->prev;
+			iter->next = insert;
+			if (insert->prev != NULL)
+				insert->prev->next = iter;
+			else
+				*deck = iter;
+			insert->prev = iter;
+			insert = iter->prev;
 		}
 	}
+}
 
-	return (13); /* Default value if card value is not found */
+/**
+ * insertion_sort_deck_value - Sort a deck of cards sorted from
+ *                             spades to diamonds from ace to king.
+ * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ */
+void insertion_sort_deck_value(deck_node_t **deck)
+{
+	deck_node_t *iter, *insert, *tmp;
+
+	for (iter = (*deck)->next; iter != NULL; iter = tmp)
+	{
+		tmp = iter->next;
+		insert = iter->prev;
+		while (insert != NULL &&
+		       insert->card->kind == iter->card->kind &&
+		       get_value(insert) > get_value(iter))
+		{
+			insert->next = iter->next;
+			if (iter->next != NULL)
+				iter->next->prev = insert;
+			iter->prev = insert->prev;
+			iter->next = insert;
+			if (insert->prev != NULL)
+				insert->prev->next = iter;
+			else
+				*deck = iter;
+			insert->prev = iter;
+			insert = iter->prev;
+		}
+	}
 }
 
 /**
@@ -75,25 +130,9 @@ int get_value(deck_node_t *card)
  */
 void sort_deck(deck_node_t **deck)
 {
-	deck_node_t *current;
+	if (deck == NULL || *deck == NULL || (*deck)->next == NULL)
+		return;
 
-	if (*deck == NULL || (*deck)->next == NULL)
-	{
-		return; /* Nothing to sort */
-	}
-	current = (*deck)->next;
-
-	while (current != NULL)
-	{
-		deck_node_t *temp = current;
-
-		while (temp != NULL && temp->prev != NULL &&
-				temp->prev->card->kind == temp->card->kind &&
-				get_value(temp->prev) > get_value(temp))
-		{
-			swap_nodes(temp->prev, temp);
-			temp = temp->prev;
-		}
-		current = current->next;
-	}
+	insertion_sort_deck_kind(deck);
+	insertion_sort_deck_value(deck);
 }

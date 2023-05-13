@@ -33,7 +33,7 @@ This project is meant to be done by groups of two students. Each group of two sh
 ## More Info:scroll:
 
 **Data Structure and Functions**
-- For this project, the following functions [print_array](./tests/print_array.c), and [print_list](./tests/print_list.c) has been given.
+- For this project, the following functions [print_array](./print_array.c), and [print_list](./print_list.c) has been given.
 - the given files `print_array.c` and pr`int_list.c` (containing the `print_array` and `print_list` functions) will be compiled with all functions during the correction.
 - the prototype of the functions `print_array` and `print_list` should be declared in the `sort.h` header file.
 - the given data structure for doubly linked list contain in the `sort.h` header file should be used.
